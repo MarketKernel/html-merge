@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<!-- viewport-fit=cover hands the notch and the home indicator to env(safe-area-inset-*). -->
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+<!-- Nothing may leave the page: no fetch, no images or fonts from elsewhere, no
+     forms posting out. blob: is for showing compared pictures. The build pins
+     script-src to the hash of the one script below. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:; connect-src 'none'; form-action 'none'; base-uri 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="color-scheme" content="light dark">
+<title>HTML Merge</title>
+<link rel="icon" href="__ICON__">
+<style>/*__STYLES__*/</style>
+</head>
+<body>
+
+<header class="topbar">
+  <button id="home" class="brand" type="button" title="Start" data-i18n-attr="topbar">
+    <img src="__ICON__" alt="" width="22" height="22">
+    <span class="brand-name">HTML Merge</span>
+  </button>
+  <nav id="crumbs" class="crumbs" aria-label="Location" data-i18n-attr="topbar"></nav>
+  <div class="topbar-actions">
+    <button id="help" class="icon-button" type="button" title="Keyboard shortcuts" aria-label="Keyboard shortcuts" data-i18n-attr="topbar">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6v.6M12 17h.01"/></svg>
+    </button>
+    <button id="settings" class="icon-button" type="button" title="Settings" aria-label="Settings" data-i18n-attr="topbar">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h9M17 6h3M15 4v4M4 12h3M11 12h9M9 10v4M4 18h11M19 18h1M17 16v4"/></svg>
+    </button>
+  </div>
+</header>
+
+<main class="main">
+
+<section id="start" class="start">
+  <div class="start-inner">
+    <h1 class="start-title" data-i18n="start">Compare folders and files</h1>
+    <p class="start-lead" data-i18n="start">
+      Pick two folders or two files. They are read here, in this page, and never changed or sent anywhere.
+    </p>
+
+    <div class="slots">
+      <div class="slot" data-side="left">
+        <div class="slot-label" data-i18n="start">Left</div>
+        <div class="slot-picked" data-name="left">
+          <span class="slot-icon"></span>
+          <span class="slot-name"></span>
+        </div>
+        <div class="slot-buttons">
+          <button class="button" type="button" data-pick="dir" data-side="left" data-i18n="start">Folder…</button>
+          <button class="button" type="button" data-pick="file" data-side="left" data-i18n="start">File…</button>
+        </div>
+        <p class="slot-hint" data-i18n="start">or drop it here</p>
+      </div>
+      <button id="swap" class="icon-button swap" type="button" title="Swap sides" aria-label="Swap sides" data-i18n-attr="start">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h13M16 3l4 4-4 4M17 17H4M8 13l-4 4 4 4"/></svg>
+      </button>
+      <div class="slot" data-side="right">
+        <div class="slot-label" data-i18n="start">Right</div>
+        <div class="slot-picked" data-name="right">
+          <span class="slot-icon"></span>
+          <span class="slot-name"></span>
+        </div>
+        <div class="slot-buttons">
+          <button class="button" type="button" data-pick="dir" data-side="right" data-i18n="start">Folder…</button>
+          <button class="button" type="button" data-pick="file" data-side="right" data-i18n="start">File…</button>
+        </div>
+        <p class="slot-hint" data-i18n="start">or drop it here</p>
+      </div>
+    </div>
+
+    <div class="start-actions">
+      <button id="compare" class="button button--primary" type="button" disabled><span data-i18n="start">Compare</span> <span class="arrow">&rarr;</span></button>
+    </div>
+    <p id="start-note" class="start-note" hidden></p>
+
+    <div id="recent" class="recent" hidden>
+      <h2 class="recent-title" data-i18n="start">Recent comparisons</h2>
+      <ul id="recent-list" class="recent-list"></ul>
+    </div>
+
+    <p class="start-version" data-i18n="start">Version <span id="version" data-slot="version"></span></p>
+    <!-- The installed app, when a new version is waiting: main.ts fills it in. -->
+    <p id="start-update" class="start-version start-update" hidden></p>
+  </div>
+  <input id="dir-input" type="file" webkitdirectory multiple hidden>
+  <input id="file-input" type="file" hidden>
+</section>
+
+<section id="folders" class="screen" hidden>
+  <div class="toolbar" role="toolbar">
+    <div class="chips" role="group">
+      <button class="chip" type="button" data-show="different" aria-pressed="true"><span class="dot dot--different"></span><span data-i18n="folder">Different</span> <b data-count="different">0</b></button>
+      <button class="chip" type="button" data-show="left" aria-pressed="true"><span class="dot dot--left"></span><span data-i18n="folder">Left only</span> <b data-count="left">0</b></button>
+      <button class="chip" type="button" data-show="right" aria-pressed="true"><span class="dot dot--right"></span><span data-i18n="folder">Right only</span> <b data-count="right">0</b></button>
+      <button class="chip" type="button" data-show="same" aria-pressed="true"><span class="dot dot--same"></span><span data-i18n="folder">Identical</span> <b data-count="same">0</b></button>
+    </div>
+    <span class="toolbar-gap"></span>
+    <label class="search">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4"/></svg>
+      <input id="folder-filter" type="search" placeholder="Filter by name" aria-label="Filter by name" data-i18n-attr="folder" autocomplete="off" spellcheck="false">
+    </label>
+    <button id="folder-flat" class="icon-button" type="button" title="Tree or flat list" aria-label="Tree or flat list" aria-pressed="false" data-i18n-attr="folder">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+    <button id="folder-expand" class="icon-button" type="button" title="Expand all" aria-label="Expand all" data-i18n-attr="folder">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 15l5 5 5-5M7 9l5-5 5 5"/></svg>
+    </button>
+    <button id="folder-collapse" class="icon-button" type="button" title="Collapse all" aria-label="Collapse all" data-i18n-attr="folder">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 20l5-5 5 5M7 4l5 5 5-5"/></svg>
+    </button>
+    <button id="folder-refresh" class="icon-button" type="button" title="Compare again (F5)" aria-label="Compare again" data-i18n-attr="folder">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.9-3.9L4 9M4 4v5h5M4 13a8 8 0 0 0 14.9 3.9L20 15M20 20v-5h-5"/></svg>
+    </button>
+  </div>
+  <div class="list-head" id="folder-head" role="row">
+    <button class="col col-name" type="button" data-sort="name"><span data-i18n="folder">Name</span></button>
+    <button class="col col-status" type="button" data-sort="status"><span data-i18n="folder">Result</span></button>
+    <button class="col col-size" type="button" data-sort="size"><span data-i18n="folder">Left size</span></button>
+    <button class="col col-size" type="button" data-sort="size"><span data-i18n="folder">Right size</span></button>
+    <button class="col col-date" type="button" data-sort="modified"><span data-i18n="folder">Left modified</span></button>
+    <button class="col col-date" type="button" data-sort="modified"><span data-i18n="folder">Right modified</span></button>
+  </div>
+  <div id="folder-list" class="list" tabindex="0" role="treegrid" aria-label="Files" data-i18n-attr="folder">
+    <div class="list-sizer"><div class="list-rows"></div></div>
+    <p id="folder-empty" class="list-empty" hidden></p>
+  </div>
+  <footer class="statusbar">
+    <span id="folder-status" class="status-text" aria-live="polite"></span>
+    <span id="folder-progress" class="progress" hidden><span class="progress-bar"></span></span>
+  </footer>
+</section>
+
+<section id="file" class="screen" hidden>
+  <div class="toolbar" role="toolbar">
+    <div class="tool-group" id="file-nav-files">
+      <button id="prev-file" class="icon-button" type="button" title="Previous different file ([)" aria-label="Previous different file" data-i18n-attr="file">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 17l-5-5 5-5M18 17l-5-5 5-5"/></svg>
+      </button>
+      <button id="next-file" class="icon-button" type="button" title="Next different file (])" aria-label="Next different file" data-i18n-attr="file">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 17l5-5-5-5M6 17l5-5-5-5"/></svg>
+      </button>
+    </div>
+    <div class="tool-group">
+      <button id="first-diff" class="icon-button" type="button" title="First difference" aria-label="First difference" data-i18n-attr="file">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 11l5-5 5 5M7 18l5-5 5 5"/></svg>
+      </button>
+      <button id="prev-diff" class="icon-button" type="button" title="Previous difference (Alt+↑)" aria-label="Previous difference" data-i18n-attr="file">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+      </button>
+      <span id="diff-position" class="diff-position" aria-live="polite"></span>
+      <button id="next-diff" class="icon-button" type="button" title="Next difference (Alt+↓)" aria-label="Next difference" data-i18n-attr="file">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+      </button>
+      <button id="last-diff" class="icon-button" type="button" title="Last difference" aria-label="Last difference" data-i18n-attr="file">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 6l5 5 5-5M7 13l5 5 5-5"/></svg>
+      </button>
+    </div>
+    <span class="toolbar-gap"></span>
+    <label class="search" id="find-box">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4"/></svg>
+      <input id="find" type="search" placeholder="Find" aria-label="Find" data-i18n-attr="file" autocomplete="off" spellcheck="false">
+      <span id="find-count" class="find-count"></span>
+    </label>
+    <div class="tool-group">
+      <button id="view-split" class="icon-button" type="button" title="Side by side or one under the other" aria-label="Side by side or one under the other" aria-pressed="true" data-i18n-attr="file">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M12 5v14"/></svg>
+      </button>
+      <button id="view-fold" class="icon-button" type="button" title="Fold identical lines" aria-label="Fold identical lines" aria-pressed="false" data-i18n-attr="file">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16M8 8l4-4 4 4M8 16l4 4 4-4"/></svg>
+      </button>
+      <button id="view-options" class="icon-button" type="button" title="View and compare options" aria-label="View and compare options" aria-haspopup="true" data-i18n-attr="file">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="12" r="1.3"/><circle cx="12" cy="12" r="1.3"/><circle cx="18" cy="12" r="1.3"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="file-heads" class="file-heads"></div>
+  <div id="file-body" class="file-body"></div>
+  <footer class="statusbar">
+    <span id="file-status" class="status-text" aria-live="polite"></span>
+  </footer>
+</section>
+
+</main>
+
+<div id="drop-veil" class="drop-veil" hidden><p data-i18n="start">Drop two folders or two files to compare them</p></div>
+
+<script>/*__APP__*/</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{
+  "name": "html-merge",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Compare folders and files side by side, with syntax highlighting — one standalone HTML file and a PWA, read-only",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "node build.mjs",
+    "watch": "node build.mjs --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "node tests/diff.mjs && node tests/rows.mjs && node tests/text.mjs && node tests/highlight.mjs && node tests/folder.mjs && node tests/i18n.mjs",
+    "test:browser": "node tests/app.mjs && node tests/pwa.mjs",
+    "i18n": "node tools/i18n.mjs",
+    "icons": "node tools/icons.mjs",
+    "shots": "node tools/shots.mjs",
+    "check": "npm run typecheck && npm test && npm run build && npm run test:browser"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.12",
+    "typescript": "^5.9.3"
+  }
+}
