@@ -36,6 +36,8 @@ Aynı sayfa bir PWA (Progressive Web App) olarak da çalışır: GitHub Pages'te
 sisteme kurulabilir ve ardından kendi penceresi ve simgesiyle ayrı bir uygulama olarak çalışır,
 çevrimdışı da çalışır — bkz. "[GitHub Pages](#github-pages)".
 
+**Çevrimiçi demo: [merge.marketkernel.com](https://merge.marketkernel.com/)**
+
 ![HTML Merge: bir JavaScript dosyasının iki sürümü yan yana](../html-merge.png)
 
 ## Nasıl kullanılır
@@ -197,6 +199,8 @@ kontrol eder, testleri çalıştırır ve `html-merge-v<version>.html` ile `SHA2
 yayınına ekler.
 
 ## GitHub Pages
+
+Bu depo şu adreste yayımlanıyor: <https://merge.marketkernel.com/>.
 
 `build/pages/`, kurulabilir bir PWA olarak aynı sayfadır: bir manifest, simgeler ve onu
 çevrimdışı çalışır tutan bir service worker. `.github/workflows/pages.yml`, `main`e her push'ta

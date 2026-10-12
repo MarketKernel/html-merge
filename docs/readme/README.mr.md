@@ -36,6 +36,8 @@
 सिस्टममध्ये इन्स्टॉल करता येते आणि मग ते स्वतःच्या विंडो आणि आयकॉनसह एक वेगळे अ‍ॅप म्हणून चालते, आणि
 ऑफलाइन काम करते — पहा "[GitHub Pages](#github-pages)".
 
+**ऑनलाइन डेमो: [merge.marketkernel.com](https://merge.marketkernel.com/)**
+
 ![HTML Merge: एका JavaScript फाइलीच्या दोन आवृत्त्या शेजारी शेजारी](../html-merge.png)
 
 ## कसे वापरावे
@@ -192,6 +194,8 @@ npm run check        # typecheck, unit tests, build, browser tests
 चालवते, आणि GitHub रिलीजला `html-merge-v<version>.html` आणि `SHA256SUMS.txt` जोडते.
 
 ## GitHub Pages
+
+ही रिपॉझिटरी येथे प्रकाशित आहे: <https://merge.marketkernel.com/>.
 
 `build/pages/` हेच पान आहे, इन्स्टॉल करता येण्याजोग्या PWA च्या रूपात: एक manifest, आयकॉन, आणि एक
 service worker जो ते ऑफलाइन चालण्यायोग्य ठेवतो. `.github/workflows/pages.yml` `main` वर प्रत्येक

@@ -36,6 +36,8 @@ HTML फ़ाइल के रूप में, जो Windows, macOS, Linux, C
 सिस्टम में इंस्टॉल किया जा सकता है, और फिर यह अपनी खुद की विंडो और आइकन के साथ एक अलग ऐप के रूप में चलता है, और
 ऑफ़लाइन काम करता है — देखें "[GitHub Pages](#github-pages)"।
 
+**ऑनलाइन डेमो: [merge.marketkernel.com](https://merge.marketkernel.com/)**
+
 ![HTML Merge: एक JavaScript फ़ाइल के दो संस्करण साथ-साथ](../html-merge.png)
 
 ## उपयोग कैसे करें
@@ -187,6 +189,8 @@ npm run check        # typecheck, unit tests, build, browser tests
 टेस्ट चलाता है, और GitHub रिलीज़ के साथ `html-merge-v<version>.html` और `SHA256SUMS.txt` जोड़ता है।
 
 ## GitHub Pages
+
+यह रिपॉज़िटरी यहाँ प्रकाशित है: <https://merge.marketkernel.com/>.
 
 `build/pages/` वही पेज है, एक इंस्टॉल किए जा सकने वाले PWA के रूप में: एक manifest, आइकन, और एक service
 worker जो इसे ऑफ़लाइन चलने लायक रखता है। `.github/workflows/pages.yml` `main` पर हर पुश पर इसे बनाता और

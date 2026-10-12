@@ -37,6 +37,8 @@ HTML ఫైల్‌గా. రెండు ఫోల్డర్లను ఎ�
 విడి యాప్‌గా నడుస్తుంది, మరియు ఆఫ్‌లైన్‌లో పనిచేస్తుంది — చూడండి
 "[GitHub Pages](#github-pages)".
 
+**ఆన్‌లైన్ డెమో: [merge.marketkernel.com](https://merge.marketkernel.com/)**
+
 ![HTML Merge: ఒక JavaScript ఫైలు యొక్క రెండు వర్షన్లు పక్కపక్కనే](../html-merge.png)
 
 ## ఎలా ఉపయోగించాలి
@@ -202,6 +204,8 @@ npm run check        # typecheck, unit tests, build, browser tests
 మరియు `SHA256SUMS.txt`ను జోడిస్తుంది.
 
 ## GitHub Pages
+
+ఈ రిపోజిటరీ ఇక్కడ ప్రచురించబడింది: <https://merge.marketkernel.com/>.
 
 `build/pages/` అదే పేజీ ఒక ఇన్‌స్టాల్ చేయదగిన PWAగా: ఒక మానిఫెస్ట్, ఐకాన్లు మరియు దాన్ని
 ఆఫ్‌లైన్‌లో పనిచేసేలా ఉంచే ఒక సర్వీస్ వర్కర్. `.github/workflows/pages.yml` దీన్ని బిల్డ్ చేసి

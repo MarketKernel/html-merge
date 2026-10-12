@@ -36,6 +36,8 @@ The same page also works as a PWA (Progressive Web App): served from GitHub Page
 installed into the system and then runs as a separate app, with its own window and icon, and
 works offline — see "[GitHub Pages](#github-pages)".
 
+**Online demo: [merge.marketkernel.com](https://merge.marketkernel.com/)**
+
 ![HTML Merge: two versions of a JavaScript file side by side](docs/html-merge.png)
 
 ## How to use
@@ -190,6 +192,8 @@ To release: `npm version minor` (or `patch`), then `git push --follow-tags`. The
 tests and attaches `html-merge-v<version>.html` and `SHA256SUMS.txt` to the GitHub release.
 
 ## GitHub Pages
+
+This repository is published at <https://merge.marketkernel.com/>.
 
 `build/pages/` is the same page as an installable PWA: a manifest, icons and a service worker
 that keeps it working offline. `.github/workflows/pages.yml` builds and tests it and deploys it

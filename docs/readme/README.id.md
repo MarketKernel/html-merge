@@ -38,6 +38,8 @@ Halaman yang sama juga berfungsi sebagai PWA (Progressive Web App): disajikan da
 ia dapat dipasang ke sistem dan kemudian berjalan sebagai aplikasi terpisah, dengan jendela dan
 ikonnya sendiri, serta berfungsi secara luring — lihat "[GitHub Pages](#github-pages)".
 
+**Demo daring: [merge.marketkernel.com](https://merge.marketkernel.com/)**
+
 ![HTML Merge: dua versi berkas JavaScript berdampingan](../html-merge.png)
 
 ## Cara menggunakan
@@ -205,6 +207,8 @@ menjalankan `.github/workflows/release.yml`, yang memeriksa bahwa tag cocok deng
 `SHA256SUMS.txt` ke rilis GitHub.
 
 ## GitHub Pages
+
+Repositori ini diterbitkan di <https://merge.marketkernel.com/>.
 
 `build/pages/` adalah halaman yang sama sebagai PWA yang dapat dipasang: sebuah manifest, ikon,
 dan service worker yang menjaganya tetap berfungsi secara luring. `.github/workflows/pages.yml`

@@ -38,6 +38,8 @@ HTML فائل کی صورت میں جو Windows، macOS، Linux، ChromeOS، And
 کے طور پر چلتا ہے، اور آف لائن بھی کام کرتا ہے — دیکھیں
 "[GitHub Pages](#github-pages)"۔
 
+**آن لائن ڈیمو: [merge.marketkernel.com](https://merge.marketkernel.com/)**
+
 ![HTML Merge: جاوا اسکرپٹ فائل کے دو نسخے شانہ بشانہ](../html-merge.png)
 
 ## استعمال کا طریقہ
@@ -198,6 +200,8 @@ library استعمال نہیں کرتا۔
 `SHA256SUMS.txt` منسلک کرتا ہے۔
 
 ## GitHub Pages
+
+یہ ریپوزٹری یہاں شائع ہے: <https://merge.marketkernel.com/>.
 
 `build/pages/` وہی صفحہ ہے بطور ایک انسٹال کیے جانے والے PWA: ایک manifest، آئیکنز، اور ایک
 service worker جو اسے آف لائن کام کرتے رہنے دیتا ہے۔ `.github/workflows/pages.yml` اسے بناتا

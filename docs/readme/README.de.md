@@ -38,6 +38,8 @@ Dieselbe Seite funktioniert auch als PWA (Progressive Web App): Von GitHub Pages
 kann sie im System installiert werden und läuft dann als eigenständige App mit eigenem Fenster
 und Symbol, und funktioniert offline — siehe „[GitHub Pages](#github-pages)“.
 
+**Online-Demo: [merge.marketkernel.com](https://merge.marketkernel.com/)**
+
 ![HTML Merge: zwei Versionen einer JavaScript-Datei nebeneinander](../html-merge.png)
 
 ## Verwendung
@@ -210,6 +212,8 @@ Tests ausführt und `html-merge-v<version>.html` sowie `SHA256SUMS.txt` an das G
 anhängt.
 
 ## GitHub Pages
+
+Dieses Repository ist veröffentlicht unter <https://merge.marketkernel.com/>.
 
 `build/pages/` ist dieselbe Seite als installierbare PWA: ein Manifest, Symbole und ein Service
 Worker, der sie offline funktionsfähig hält. `.github/workflows/pages.yml` baut und testet sie

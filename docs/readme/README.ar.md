@@ -35,6 +35,8 @@
 النظام فتعمل بعدها كتطبيق منفصل، بنافذته وأيقونته الخاصتين، وتعمل دون اتصال — انظر
 "[GitHub Pages](#github-pages)".
 
+**عرض تجريبي عبر الإنترنت: [merge.marketkernel.com](https://merge.marketkernel.com/)**
+
 ![HTML Merge: نسختان من ملف جافاسكربت جنبًا إلى جنب](../html-merge.png)
 
 ## كيفية الاستخدام
@@ -182,6 +184,8 @@ npm run check        # فحص الأنواع، الاختبارات، البنا
 الاختبارات، ويُرفِق `html-merge-v<version>.html` و`SHA256SUMS.txt` بإصدار GitHub.
 
 ## GitHub Pages
+
+هذا المستودع منشور على <https://merge.marketkernel.com/>.
 
 `build/pages/` هي الصفحة نفسها كتطبيق PWA قابل للتثبيت: بيان (manifest)، وأيقونات، وعامل خدمة
 (service worker) يُبقيها تعمل دون اتصال. `.github/workflows/pages.yml` يبنيها ويختبرها وينشرها

@@ -37,6 +37,8 @@ Android и iOS. Выберите две папки — и появится сп�
 быть установлена в систему и затем работает как отдельное приложение — со своим окном и
 значком — и работает офлайн — см. «[GitHub Pages](#github-pages)».
 
+**Онлайн-демо: [merge.marketkernel.com](https://merge.marketkernel.com/)**
+
 ![HTML Merge: две версии JavaScript-файла рядом](../html-merge.png)
 
 ## Как пользоваться
@@ -200,6 +202,8 @@ npm run check        # typecheck, unit tests, build, browser tests
 `SHA256SUMS.txt` к релизу на GitHub.
 
 ## GitHub Pages
+
+Этот репозиторий опубликован по адресу <https://merge.marketkernel.com/>.
 
 `build/pages/` — та же страница в виде устанавливаемого PWA: манифест, значки и service worker,
 который сохраняет её работоспособность офлайн. `.github/workflows/pages.yml` собирает и

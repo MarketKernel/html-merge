@@ -35,6 +35,8 @@
 到系统中，作为一个独立的应用运行，拥有自己的窗口和图标，并可离线使用——参见
 "[GitHub Pages](#github-pages)"。
 
+**在线演示： [merge.marketkernel.com](https://merge.marketkernel.com/)**
+
 ![HTML Merge：并排显示一个 JavaScript 文件的两个版本](../html-merge.png)
 
 ## 使用方法
@@ -177,6 +179,8 @@ npm run check        # typecheck, unit tests, build, browser tests
 试，并将 `html-merge-v<version>.html` 和 `SHA256SUMS.txt` 附加到 GitHub 发布版本中。
 
 ## GitHub Pages
+
+本仓库发布在 <https://merge.marketkernel.com/>。
 
 `build/pages/` 是同一个页面的可安装 PWA 版本：包含一个 manifest、图标和一个用于离线运行的
 service worker。`.github/workflows/pages.yml` 会在每次推送到 `main` 时构建并测试它，然后

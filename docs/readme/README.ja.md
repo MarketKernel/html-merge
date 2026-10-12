@@ -37,6 +37,8 @@
 れたものはシステムにインストールでき、独自のウィンドウとアイコンを持つ別アプリとして動作
 し、オフラインでも使えます——「[GitHub Pages](#github-pages)」を参照してください。
 
+**オンラインデモ： [merge.marketkernel.com](https://merge.marketkernel.com/)**
+
 ![HTML Merge: JavaScript ファイルの 2 つのバージョンを左右に並べたところ](../html-merge.png)
 
 ## 使い方
@@ -202,6 +204,8 @@ npm run check        # typecheck, unit tests, build, browser tests
 スに添付します。
 
 ## GitHub Pages
+
+このリポジトリの公開先： <https://merge.marketkernel.com/>
 
 `build/pages/` は、インストール可能な PWA としての同じページです。マニフェスト、アイコ
 ン、そしてオフラインでも動作し続けるための service worker が含まれます。
